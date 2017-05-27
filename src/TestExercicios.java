@@ -1,33 +1,60 @@
 import static org.junit.Assert.*;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class TestExercicios {
-
+	
+	private Exercicios exercicio;
+	
+	@Before
+	public void before() {
+		exercicio = new Exercicios();
+	}
+	
 	@Test
 	public void testTiraAcento() {
-		Exercicios exercicios = new Exercicios();
-		
-		assertEquals(exercicios.tiraAcento("Manutenção"), "Manutencao");
-		assertEquals(exercicios.tiraAcento("Paraná"), "Parana");
-		assertEquals(exercicios.tiraAcento("Saída"), "Saida");
+		assertEquals(exercicio.tiraAcento("Manutenção"), "Manutencao");
+		assertEquals(exercicio.tiraAcento("Paraná"), "Parana");
+		assertEquals(exercicio.tiraAcento("Saída"), "Saida");
 	}
 
 	@Test
 	public void testPrimeiraLetra() {
-		Exercicios exercicios = new Exercicios();
-		
-		assertEquals(exercicios.primeiraLetra("Manutenção"), "M");
-		assertEquals(exercicios.primeiraLetra("Paraná"), "P");
-		assertEquals(exercicios.primeiraLetra("Saída"), "S");
+		assertEquals(exercicio.primeiraLetra("Manutenção"), "M");
+		assertEquals(exercicio.primeiraLetra("Paraná"), "P");
+		assertEquals(exercicio.primeiraLetra("Saída"), "S");
 	}
 
 	@Test
 	public void testAcentuarAsLetrasADaPrimeiraPalavra() {
-		Exercicios exercicios = new Exercicios();
-		
-		assertEquals(exercicios.acentuarAsLetrasADaPrimeiraPalavra("Aula No Sábado"), "Áulá No Sábado");
-		assertEquals(exercicios.acentuarAsLetrasADaPrimeiraPalavra("Marcela Alves"), "Márcelá Alves");
+		assertEquals(exercicio.acentuarAsLetrasADaPrimeiraPalavra("Aula No Sábado"), "Áulá No Sábado");
+		assertEquals(exercicio.acentuarAsLetrasADaPrimeiraPalavra("Marcela Alves"), "Márcelá Alves");
 	}
+
+	@Test
+	public void testSepararFrases() {
+		String[] fraseSeparada = exercicio.separarFrases("Olá! Tudo Bom?", "!");
+
+		assertEquals(fraseSeparada[0], "Olá");
+		assertEquals(fraseSeparada[1], " Tudo Bom?");
+	}
+
+	@Test
+	public void testBuscarPalavraCimaDeArquivo() {
+		assertTrue(exercicio.contemValorNoArquivo("cima"));
+		assertFalse(exercicio.contemValorNoArquivo("jose"));
+	}
+	
+
+	@Test
+	public void testArquivoCidade() {
+		exercicio.criaArquivoCidade();
+		exercicio.lerArquivoCidades();
+	}
+
 }
