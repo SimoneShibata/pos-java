@@ -15,8 +15,11 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -38,6 +41,48 @@ public class Executador {
 		// inputOutputJava7();
 
 		// inputOutputJava7Exemplo2();
+
+		// copiarArquivo();
+
+		// threads();
+
+		// threadsSincronizada();
+	}
+
+	private static void threadsSincronizada() {
+		ClasseSynchronized sincronismo = new ClasseSynchronized();
+		Thread t1 = new Thread(sincronismo);
+		Thread t2 = new Thread(sincronismo);
+
+		t1.start();
+		t2.start();
+	}
+
+	private static void threads() {
+		EscreveAlgo algo = new EscreveAlgo();
+		EscreveOutraCoisa outraCoisa = new EscreveOutraCoisa();
+
+		Thread t1 = new Thread(algo);
+		Thread t2 = new Thread(outraCoisa);
+
+		t1.start();
+		t2.start();
+	}
+
+	private static void copiarArquivo() {
+		Path FROM = Paths.get("saida.txt");
+		Path TO = Paths.get("c:\\temp\\saida2.txt");
+
+		CopyOption[] options = new CopyOption[] {
+				StandardCopyOption.REPLACE_EXISTING,
+				StandardCopyOption.COPY_ATTRIBUTES };
+
+		try {
+			Files.copy(FROM, TO, options);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	private static void inputOutputJava7Exemplo2() {
