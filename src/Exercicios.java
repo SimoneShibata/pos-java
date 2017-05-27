@@ -9,6 +9,7 @@ import java.io.PrintStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -104,4 +105,9 @@ public class Exercicios {
 		return palavras;
 	}
 
+	public String buscarCidade(String cidade) {
+		List<String> cidades = Arrays.asList("Maringá", "Londrina", "Cambará");
+		return cidades.stream().filter(c -> c.equals(cidade)).findFirst().orElse(null);
+	}
+	
 }

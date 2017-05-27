@@ -65,4 +65,11 @@ public class TestExercicios {
 	public void testOrdenarString() {
 		assertEquals(exercicio.ordernarString().stream().findFirst().get(), "Armando");		
 	}
+
+	@Test
+	public void testBuscarCidades() {
+		assertEquals(exercicio.buscarCidade("Maringá"), "Maringá");		
+		assertEquals(exercicio.buscarCidade("Cambará"), "Cambará");		
+		assertEquals(exercicio.buscarCidade("Tubarão"), null);
+	}
 }
