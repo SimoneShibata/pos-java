@@ -1,7 +1,6 @@
-import static org.junit.Assert.*;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -49,7 +48,6 @@ public class TestExercicios {
 		assertTrue(exercicio.contemValorNoArquivo("cima"));
 		assertFalse(exercicio.contemValorNoArquivo("jose"));
 	}
-	
 
 	@Test
 	public void testArquivoCidade() {
@@ -57,4 +55,14 @@ public class TestExercicios {
 		exercicio.lerArquivoCidades();
 	}
 
+	@Test
+	public void testExemploColecoes() {
+		assertTrue(exercicio.exemploColecoes().size() > 0);		
+		assertEquals(exercicio.exemploColecoes().stream().findFirst().get().getNome(), "Belinha");		
+	}
+
+	@Test
+	public void testOrdenarString() {
+		assertEquals(exercicio.ordernarString().stream().findFirst().get(), "Armando");		
+	}
 }
